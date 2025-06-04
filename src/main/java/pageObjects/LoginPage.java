@@ -15,6 +15,7 @@ public class LoginPage {
     By emailField = By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[2]");
     By passwordField = By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[3]");
     By loginButton = By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/button");
+    By errorWordingLogin = By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/p");
 
     public By getLoginImage() {
         return loginImage;
@@ -30,5 +31,9 @@ public class LoginPage {
 
     public By getLoginButton() {
         return loginButton;
+    }
+
+    public By getErrorWordingLogin() {
+        return errorWordingLogin;
     }
 }

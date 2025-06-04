@@ -73,4 +73,26 @@ public class LoginSteps {
         Assert.assertEquals(actualUrl, expectedUrl);
     }
 
+    @And("input wrong password {string}")
+    public void inputWrongPassword(String password) {
+        WebElement passwordElement = WaitUtils.waitForElementToBeVisible(loginPage.getPasswordField());
+
+        passwordElement.sendKeys(password);
+
+        // ini mengecek apakah field password bertipe "password" (untuk memastikan teks disembunyikan)
+        boolean isPasswordType = "password".equals(passwordElement.getAttribute("type"));
+        // Asersi untuk memastikan password terisi
+        Assert.assertTrue("Password input mismatch", isPasswordType);
+    }
+
+    @Then("user see error login")
+    public void userSeeErrorLogin() {
+        WebElement errorWordingLoginElement = WaitUtils.waitForElementToBeVisible(loginPage.getErrorWordingLogin());
+
+        String expectedErrorWording = "Your email or password is incorrect!";
+        String actualErrorWording = errorWordingLoginElement.getText();
+
+        Assert.assertEquals(actualErrorWording, expectedErrorWording);
+    }
+
 }
