@@ -15,3 +15,10 @@ Feature: Register
     And input phone number "081122334455"
     And click create account button
     Then user success register account
+
+  Scenario: User failed register with existing email
+    Given user is on signup page
+    When input name "Muhammad Ikbal"
+    And input existing email "ikbal@gmail.com"
+    And click signup button
+    Then user see error register

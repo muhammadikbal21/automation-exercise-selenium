@@ -199,4 +199,24 @@ public class RegisterSteps {
         Assert.assertEquals(actualUrl, expectedUrl);
     }
 
+    @Then("user see error register")
+    public void userSeeErrorRegister() {
+        WebElement errorWordingRegisterElement = WaitUtils.waitForElementToBeVisible(registerPage.getErrorWordingRegister());
+
+        String expectedErrorWording = "Email Address already exist!";
+        String actualErrorWording = errorWordingRegisterElement.getText();
+
+        Assert.assertEquals(actualErrorWording, expectedErrorWording);
+    }
+
+    @And("input existing email {string}")
+    public void inputExistingEmail(String email) {
+        WebElement existingEmailElement = WaitUtils.waitForElementToBeVisible(registerPage.getEmailSignUp());
+
+        existingEmailElement.sendKeys(email);
+
+        // ini berfungsi untuk mengambil nilai dari field email agar dapat diperiksa
+        String expectedEmailInput = existingEmailElement.getAttribute("value");
+        Assert.assertEquals("Email input mismatch", expectedEmailInput, email);
+    }
 }

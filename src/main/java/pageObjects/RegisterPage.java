@@ -25,6 +25,7 @@ public class RegisterPage {
     By createAccountButton = By.xpath("//*[@id=\"form\"]/div/div/div/div[1]/form/button");
     By successRegisterTitle = By.xpath("//*[@id=\"form\"]/div/div/div/h2");
     By successRegisterWording = By.xpath("//*[@id=\"form\"]/div/div/div/p[1]");
+    By errorWordingRegister = By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/p");
 
     public By getNameField() {
         return nameField;
@@ -80,5 +81,9 @@ public class RegisterPage {
 
     public By getSuccessRegisterWording() {
         return successRegisterWording;
+    }
+
+    public By getErrorWordingRegister() {
+        return errorWordingRegister;
     }
 }
